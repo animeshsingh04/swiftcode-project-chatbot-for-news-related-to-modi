@@ -1,19 +1,33 @@
 #message-pane {
-    background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWc1q_EuSA8Ex429zAe7e49UNg8XzFUnEOkq7K032mt-c-ehwJ0Q);
+    background: url(https://cdn-images-1.medium.com/max/1600/1*BnwJZLpYfwYAf8QijMqDRA.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: right bottom;
 }
 
 .message-time {
-    color: rgb(128, 128, 128);
+    color: #45426D;
     font-size: 12px;
     margin-top: 4px;
 }
 
 .message-card {
     border-radius: 10px;
+    box-shadow: 0 6px 11px;
+    font-family: 'Dancing Script', cursive;
     font-size: 18px;
-    max-width: 75%;
+    font-weight: bold;
+    max-width: 65%;
     padding: 10px;
+    text-transform: capitalize;
+}
+
+#form-card {
+    margin: 0;
+}
+
+.fa {
+    font-size: 25px;
+    color: #2abfea;
+    margin-top: 11px;
 }

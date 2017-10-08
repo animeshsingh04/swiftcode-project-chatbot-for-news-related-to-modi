@@ -4,16 +4,26 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="/assets/stylesheets/chat.css">
+    <link href="https://fonts.googleapis.com/css?family=Cookie|Dancing+Script|Indie+Flower|Lato|Nosifer|Noto+Sans|Open+Sans|Pacifico|Roboto|Roboto+Slab|Satisfy|Shadows+Into+Light"
+        rel="stylesheet">
 </head>
 
 <body ng-app="chatApp" ng-controller="chatController" layout="row" layout-align="center-stretch">
     <md-card flex="none" layout="column" style="max-width: 100%; width:800px">
         <md-content id="message-pane" flex="90">
             <div ng-repeat="message in messages" layout="column" layout-align="{{message.sender=='BOT'? 'start start': 'start end'}}">
-                <md-card class="message-card" ng-style="message.sender=='BOT'? {'background-color': '#2abfea'}: {'background-color': '#E9A11B'}">
+                <md-card class="message-card" ng-style="message.sender=='BOT'? 
+                {'background-color': '#2abfea'}: 
+                {'background-color': '#E9A11B'}">
                     <span>
                         {{message.text}}
+                    </span>
+                    <span ng-bind-html="trust(message.feedResponse.description)">
+                        {{message.feedResponse.description}}
                     </span>
                     <span class="message-time">
                         {{message.time}}
@@ -21,10 +31,15 @@
                 </md-card>
             </div>
         </md-content>
-        <md-card id="form-card" flex="10">
-            <form>
+        <md-card id="form-card" flex="10" layout="row" class="md-whiteframe-8dp">
+            <form flex="90" layout="row" ng-submit="sendMessage()">
+                <md-input-container layout-align="center center" flex>
+                    <label>Meassage</label>
+                    <input ng-model="userMessage">
+                </md-input-container>
             </form>
-            <md-button></md-button>
+            <md-button flex='10' class="md-icon-button" ng-click="sendMessage()">
+                <md-icon><i class="fa fa-share-square-o" aria-hidden="true"></i></md-icon>
             </md-button>
         </md-card>
     </md-card>
